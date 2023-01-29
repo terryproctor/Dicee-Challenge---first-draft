@@ -22,18 +22,24 @@ function findWinner(player1Score, player2Score){
     } 
 }
 
-function getImages(scores, result) {
-    let resultHeader = document.getElementById("resultHeader");
-    
+function getImages(scores) {
     let player1img = document.getElementsByClassName("img1")[0];
     let player2img = document.getElementsByClassName("img2")[0];
 
-    resultHeader.textContent = result;
-    
     player1img.src = "/images/dice" + scores.score1.toString() + ".png";
     player2img.src = "/images/dice" + scores.score2.toString() + ".png";
+    
     return 1;  
 }
+
+function getHeader(result){
+    let resultHeader = document.getElementById("resultHeader");
+
+    resultHeader.textContent = result;
+
+    return 1;
+}
+
 
 function playRound() {
     let scores = getPlayerScores();
@@ -41,8 +47,8 @@ function playRound() {
         // console.log(scores.score1, scores.score2);
 
     let result = findWinner(scores.score1, scores.score2);
-    
-    getImages(scores, result)
+    getImages(scores);
+    getHeader(result);
     return result;
 }
 
